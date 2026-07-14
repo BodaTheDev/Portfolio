@@ -1,26 +1,201 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* Surface Colors */
+  --color-background: #000000;
+  --color-surface: #0C0C0E;
+  --color-border-muted: #1C1C1E;
+
+  /* Brand Colors */
+  --color-brand-orange: #E95420;
+
+  /* Typography Colors */
+  --color-text-header: #FFFFFF;
+  --color-text-body: #8A8A93;
+
+  /* CyberGlitch Colors */
+  --color-cyber-red: #ff0040;
+  --color-cyber-cyan: #00ccff;
+
+  /* Fonts */
+  --font-sans: var(--font-geist-sans), "Inter", ui-sans-serif, system-ui;
+  --font-mono: var(--font-geist-mono), "JetBrains Mono", ui-monospace, SFMono-Regular;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@layer base {
+  body {
+    /* Use the hex directly here to avoid the @apply chicken-and-egg problem during the first build */
+    background-color: #000000;
+    color: #8A8A93;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: "ss01", "ss02", "cv01", "cv02";
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  h1,
+  h2,
+  h3,
+  h4 {
+    color: #FFFFFF;
+    font-family: var(--font-geist-sans);
+    letter-spacing: -0.05em;
+    text-transform: uppercase;
+    font-weight: 700;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1C1C1E;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #E95420;
+}
+
+/* Architectural Grid Utility */
+.arch-grid {
+  background-size: 40px 40px;
+  background-image:
+    linear-gradient(to right, #0C0C0E 1px, transparent 1px),
+    linear-gradient(to bottom, #0C0C0E 1px, transparent 1px);
+}
+
+:root {
+  --accent: #E95420;
+  --accent-glitch: #bbbbbb;
+}
+
+/* Cyber Glitch Logic */
+@layer components {
+
+  /* Container Heading - Tighten the tracking to match reference */
+  .glitch-header {
+    font-family: var(--font-space);
+    font-weight: 700;
+    letter-spacing: -0.06em;
+    /* More aggressive tracking */
+    text-transform: uppercase;
+  }
+
+  .fck {
+    color: var(--accent);
+    /* Your Orange/Red */
+    text-shadow: 2px 2px 0px rgba(0, 204, 255, 0.2);
+    /* Subtle cyan shadow behind base */
+    position: relative;
+    display: inline-block;
+    z-index: 1;
+  }
+
+  /* 1. The "Ghost" Outline (The Static Blue/Cyan Trace) */
+  .fck::after {
+    content: attr(data-text);
+    position: absolute;
+    top: -2px;
+    /* LIFTED UP */
+    left: 1px;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(0, 204, 255, 0.5);
+    /* Cyan stroke */
+    z-index: -1;
+    opacity: 0.6;
+  }
+
+  /* 2. Hover Jitter Layers */
+  .glitch-layer::before,
+  .glitch-layer::after {
+    content: attr(data-text);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.1s ease;
+  }
+
+  /* Cyan Layer (LIFTED) */
+  .fck:hover::before {
+    content: attr(data-text);
+    position: absolute;
+    top: -6px;
+    /* MORE LIFT */
+    left: 2px;
+    animation: glitch-1 0.2s infinite;
+    color: var(--accent-glitch);
+    /* Cyan */
+    opacity: 0.7;
+    z-index: -1;
+    /* Masking effect like the original */
+    /* clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%); */
+  }
+
+  /* Red/Orange Layer (DROPPED) */
+  .fck:hover::after {
+    content: attr(data-text);
+    position: absolute;
+    top: -6px;
+    /* DROPPED DOWN */
+    left: -2px;
+    animation: glitch-2 0.2s infinite;
+    color: var(--accent);
+    /* Red/Orange */
+    opacity: 0.7;
+    z-index: -2;
+    /* Offset masking */
+    /* clip-path: polygon(0 55%, 100% 55%, 100% 100%, 0 100%); */
+  }
+
+  /* 3. High-Frequency Jitter Keyframes */
+  @keyframes glitch-1 {
+    0% {
+      transform: translate(0);
+    }
+
+    25% {
+      transform: translate(-3px, -2px);
+    }
+
+    50% {
+      transform: translate(3px, 1px);
+    }
+
+    75% {
+      transform: translate(-1px, -1px);
+    }
+
+    100% {
+      transform: translate(0);
+    }
+  }
+
+  @keyframes glitch-2 {
+    0% {
+      transform: translate(0);
+    }
+
+    25% {
+      transform: translate(3px, 2px);
+    }
+
+    50% {
+      transform: translate(-3px, -1px);
+    }
+
+    75% {
+      transform: translate(1px, 1px);
+    }
+
+    100% {
+      transform: translate(0);
+    }
+  }
 }
