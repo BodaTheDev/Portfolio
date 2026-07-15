@@ -1,0 +1,140 @@
+'use client';
+
+import { Mail, MessageCircle } from 'lucide-react';
+import { ProfitText } from './ProfitText';
+
+// Custom SVG Components to bypass lucide-react export errors
+const GithubIcon = ({ className }: { className?: string }) => (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+        <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.28 1.15-.28 2.35 0 3.5-.73 1.02-1.08 2.25-1 3.5 0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
+        <path d="M9 18c-4.51 2-5-2-7-2" />
+    </svg>
+);
+
+const LinkedinIcon = ({ className }: { className?: string }) => (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+        <rect width="4" height="12" x="2" y="9" />
+        <circle cx="4" cy="4" r="2" />
+    </svg>
+);
+
+const Footer = () => {
+    const email = "abdelrahman.almeshwady@gmail.com";
+
+    const socials = [
+        { name: 'GitHub', href: 'https://github.com/BodaTheDev', icon: GithubIcon },
+        { name: 'LinkedIn', href: 'https://www.linkedin.com/in/abdelrahman-al-meshwady/', icon: LinkedinIcon },
+        { name: 'WhatsApp', href: 'http://wa.me/+201116351047', icon: MessageCircle },
+        { name: 'Mail', href: `mailto:${email}`, icon: Mail },
+    ];
+
+    const sitemap = [
+        { name: 'Home', href: '#home' },
+        { name: 'Projects', href: '#work' },
+        { name: 'Capabilities', href: '#capabilities' },
+    ];
+
+    return (
+        <footer className="bg-[#0A0A0A] pt-5 md:pt-24 pb-8 md:pb-12 px-6 md:px-20 border-t border-neutral-900 relative">
+            <div className="max-w-[1400px] mx-auto">
+
+                {/* TOP SECTION: Information Grid */}
+                {/* COMPRESSED: Changed mb-40 to mb-16 (mobile) and mb-24 (desktop) */}
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 mb-10 md:mb-35">
+
+                    {/* Left: Manifesto Column */}
+                    <div className="lg:col-span-8">
+                        <h2 className="text-[10px] md:text-sm font-mono text-[#E95420] tracking-[0.3em] mb-4 md:mb-6 uppercase">
+                            // Final Transaction
+                        </h2>
+
+                        <div className="mb-8">
+                            <h3 className="text-xl md:text-5xl font-bold tracking-tighter uppercase text-white leading-tight mb-3">
+                                Let’s build something <br />
+                                <ProfitText text="PROFITABLE" />.
+                            </h3>
+                            <p className="text-neutral-500 text-xs md:text-sm max-w-sm leading-relaxed">
+                                Whether you need a Technical Lead to manage the vision or a Senior Engineer to build the engine, I am ready to deliver.
+                            </p>
+                        </div>
+                    </div>
+
+                    {/* Right: Metadata Links */}
+                    <div className="lg:col-span-4 grid grid-cols-2 gap-4 pt-0 lg:pt-2">
+                        <div className="space-y-4 md:space-y-6">
+                            <h4 className="text-[9px] md:text-[10px] uppercase tracking-widest text-neutral-600 font-bold">Socials</h4>
+                            <ul className="space-y-2 md:space-y-3">
+                                {socials.map((link) => (
+                                    <li key={link.name}>
+                                        <a
+                                            href={link.href}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="text-xs md:text-sm text-neutral-300 hover:text-[#E95420] transition-colors flex items-center gap-2 group"
+                                        >
+                                            <link.icon className="w-3 h-3 md:w-4 md:h-4 text-neutral-600 group-hover:text-[#E95420] transition-colors" />
+                                            {link.name}
+                                        </a>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                        <div className="space-y-4 md:space-y-6">
+                            <h4 className="text-[9px] md:text-[10px] uppercase tracking-widest text-neutral-600 font-bold">Sitemap</h4>
+                            <ul className="space-y-2 md:space-y-3">
+                                {sitemap.map((link) => (
+                                    <li key={link.name}>
+                                        <a href={link.href} className="text-xs md:text-sm text-neutral-300 hover:text-[#E95420] transition-colors">
+                                            {link.name}
+                                        </a>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                {/* MIDDLE SECTION: Stroke-Only Interaction */}
+                {/* COMPRESSED: Reduced padding and bottom margin */}
+                <div className="relative group flex justify-center items-center py-4 md:py-8 mb-8 md:mb-12 cursor-pointer">
+                    <a href={`mailto:${email}`} className="w-full text-center">
+                        <h3
+                            className="text-[14vw] md:text-[12vw] font-bold leading-none text-transparent uppercase select-none transition-all duration-700 ease-out group-hover:drop-shadow-[0_0_30px_rgba(233,84,32,0.3)]"
+                            style={{
+                                WebkitTextStroke: '2.5px #2A2A2A',
+                            }}
+                            onMouseEnter={(e) => {
+                                e.currentTarget.style.webkitTextStroke = '3px #E95420';
+                            }}
+                            onMouseLeave={(e) => {
+                                e.currentTarget.style.webkitTextStroke = '2.5px #2A2A2A';
+                            }}
+                        >
+                            LET'S WORK
+                        </h3>
+                    </a>
+                </div>
+
+                {/* BOTTOM SECTION: Metadata & Credits */}
+                {/* COMPRESSED: Tightened bottom area */}
+                <div className="pt-6 md:pt-8 border-t border-neutral-900 flex flex-col md:flex-row justify-between items-center md:items-end gap-4">
+                    <p className="text-[8px] md:text-[10px] text-neutral-600 uppercase tracking-widest font-mono">
+                        © 2026 Abdelrahman Al-Meshwady. All Rights Reserved.
+                    </p>
+                    <div className="text-center md:text-right space-y-1">
+                        <p className="text-[8px] md:text-[10px] text-neutral-600 uppercase tracking-widest">
+                            Designed with Precision
+                        </p>
+                        <p className="text-[8px] md:text-[10px] text-neutral-600 uppercase tracking-widest">
+                            Coded with Passion
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </footer>
+    );
+};
+
+export default Footer;

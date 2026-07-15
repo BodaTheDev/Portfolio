@@ -5,42 +5,41 @@ import { motion } from 'framer-motion';
 export const ScalingWord = () => {
     return (
         <motion.span
-            className="inline-flex whitespace-nowrap cursor-default"
+            className="inline-flex items-baseline cursor-default"
             initial="initial"
             whileHover="hover"
         >
-            {/* Static prefix */}
-            <span className="inline-block text-text-header">S</span>
-            <span className="inline-block text-text-header">C</span>
+            <span className="inline-block">S</span>
+            <span className="inline-block">C</span>
 
-            {/* The Scaling 'A' */}
+            {/* THE SCALING 'A' */}
             <motion.span
+                className="inline-block"
                 variants={{
                     initial: { scaleX: 1, originX: 0 },
                     hover: {
                         scaleX: 3.5,
-                        originX: 0,
                         transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] }
                     }
                 }}
-                className="inline-block text-text-header"
             >
                 A
             </motion.span>
 
-            {/* Shifting Suffix */}
+            {/* THE SHIFTING 'LE' */}
+            {/* x: 0 in initial ensures there is NO gap in the normal state */}
             <motion.span
+                className="inline-flex"
                 variants={{
                     initial: { x: 0 },
                     hover: {
-                        x: 195, // Adjust this value based on how much 'A' scales
+                        x: "1.55em",
                         transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] }
                     }
                 }}
-                className="inline-flex"
             >
-                <span className="text-text-header">L</span>
-                <span className="text-text-header">E</span>
+                <span className="inline-block">L</span>
+                <span className="inline-block">E</span>
             </motion.span>
         </motion.span>
     );
