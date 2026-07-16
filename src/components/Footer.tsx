@@ -2,6 +2,7 @@
 
 import { Mail } from 'lucide-react';
 import { ProfitText } from './ProfitText';
+import { motion } from 'framer-motion';
 
 // Custom SVG Components to bypass lucide-react export errors
 const GithubIcon = ({ className }: { className?: string }) => (
@@ -101,23 +102,21 @@ const Footer = () => {
                     </div>
                 </div>
 
-                {/* MIDDLE SECTION: Stroke-Only Interaction */}
-                {/* COMPRESSED: Reduced padding and bottom margin */}
-                <div className="relative group flex justify-center items-center py-4 md:py-8 mb-8 md:mb-12 cursor-pointer">
-                    <a href={`mailto:${email}`} className="w-full text-center">
-                        <h3
-                            className="text-[14vw] md:text-[12vw] font-bold leading-none text-transparent uppercase select-none transition-all duration-700 ease-out group-hover:drop-shadow-[0_0_30px_rgba(233,84,32,0.3)]"
-                            style={{
-                                WebkitTextStroke: '2.5px #2A2A2A',
-                            }}
-                            onMouseEnter={(e) => {
-                                e.currentTarget.style.webkitTextStroke = '3px #E95420';
-                            }}
-                            onMouseLeave={(e) => {
-                                e.currentTarget.style.webkitTextStroke = '2.5px #2A2A2A';
-                            }}
-                        >
-                            LET'S WORK
+                {/* MIDDLE SECTION: Dual-Layer Hardware Interaction */}
+                <div className="relative flex justify-center items-center py-4 md:py-8 mb-8 md:mb-12 cursor-pointer">
+                    <a href={`mailto:${email}`} className="work-anchor no-underline">
+                        <h3 className="relative text-[14vw] md:text-[12vw] font-bold leading-none text-transparent uppercase select-none text-center">
+
+                            {/* LAYER 1: The Ghost (Visible by default) */}
+                            <span className="layer-ghost block">
+                                LET'S WORK
+                            </span>
+
+                            {/* LAYER 2: The Active (Visible on Tap/Hover) */}
+                            <span className="layer-active block" aria-hidden="true">
+                                LET'S WORK
+                            </span>
+
                         </h3>
                     </a>
                 </div>

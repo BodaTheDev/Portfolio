@@ -13,19 +13,6 @@ const Scene3D = dynamic(() => import('./Scene3D'), {
     loading: () => <div className="w-full h-full bg-surface/20" />
 });
 
-const scrollToWork = () => {
-    const workSection = document.getElementById('projects');
-    if (workSection) {
-        workSection.scrollIntoView({ behavior: 'smooth' });
-    }
-};
-
-const scrollToSpecs = () => {
-    const specsSection = document.getElementById('capabilities');
-    if (specsSection) {
-        specsSection.scrollIntoView({ behavior: 'smooth' });
-    }
-};
 
 const Hero = () => {
     return (
@@ -68,31 +55,31 @@ const Hero = () => {
                             I specialize in transitioning MVPs to high-concurrency enterprise architectures, designing robust, type-safe Node.js engines, and orchestrating cross-functional teams to deliver stable, high-performance infrastructure.
                         </p>
 
-                        {/* CTA Group - Optimized for Weight Interaction */}
-                        <div className="flex flex-wrap items-center gap-6 md:gap-10">
+                        {/* CTA Group - Forced to the top of the stack */}
+                        <div className="flex flex-wrap items-center gap-4 md:gap-10 relative z-[100]">
                             <WeightHover
                                 label="POP THE HOOD"
-                                onClick={scrollToWork}
+                                href="#projects" // Hard-coded anchor
                                 icon={<AcceleratorArrow />}
-                                className="bg-brand-orange text-white px-8 md:px-10 py-4 md:py-5 uppercase text-[11px] tracking-[0.3em] hover:bg-white hover:text-black group"
+                                className="bg-brand-orange text-white px-8 md:px-10 py-4 md:py-5 uppercase text-[11px] tracking-[0.3em] hover:bg-white hover:text-black group active:bg-white active:text-black"
                             />
 
                             <WeightHover
                                 label="FETCH SPECS"
-                                onClick={scrollToSpecs}
+                                href="#capabilities" // Hard-coded anchor
                                 icon={<SpecPull />}
-                                className="text-white hover:text-brand-orange uppercase text-[11px] tracking-[0.3em] group"
+                                className="text-white hover:text-brand-orange uppercase text-[11px] tracking-[0.3em] transition-colors duration-300 group active:text-brand-orange"
                             />
                         </div>
                     </motion.div>
                 </div>
 
                 {/* TOP (on Mobile) / RIGHT (on Desktop): Visual Column */}
-                <div className="w-full lg:w-5/12 relative h-[300px] sm:h-[400px] lg:h-[70vh] flex items-center justify-center z-10">
+                <div className="w-full lg:w-5/12 relative h-[300px] sm:h-[400px] lg:h-[70vh] flex items-center justify-center z-10 pointer-events-none">
                     {/* The Background Glow */}
                     <div className="absolute w-[200px] h-[200px] md:w-[600px] md:h-[600px] rounded-full bg-brand-orange/5 lg:bg-brand-orange/10 blur-[60px] lg:blur-[100px] z-0" />
 
-                    <div className="relative z-10 w-full h-full flex items-center justify-center">
+                    <div className="relative z-10 w-full h-full flex items-center justify-center pointer-events-auto">
                         {/* Desktop: 3D Scene */}
                         <div className="hidden lg:block w-full h-full">
                             <Scene3D />

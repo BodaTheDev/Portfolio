@@ -198,7 +198,181 @@
       transform: translate(0);
     }
   }
+
+  /* Wheight Hover Logic */
+  /* THE MASTER BUTTON TRIGGER */
+  .btn-weight-morph {
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+
+  /* THE LETTERS */
+  .btn-weight-morph .letter {
+    display: inline-block;
+    font-weight: 400;
+    font-variation-settings: "wght" 400;
+    /* High-performance easing */
+    transition: font-variation-settings 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+      font-weight 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+      color 0.3s ease;
+  }
+
+  /* MASTER TRIGGER: DESKTOP HOVER & MOBILE TAP */
+  /* This forces the weight to shift the millisecond a finger touches the screen */
+  .btn-weight-morph:hover .letter,
+  .btn-weight-morph:active .letter {
+    font-weight: 900 !important;
+    font-variation-settings: "wght" 900 !important;
+  }
+
+  /* 1. Accelerator Arrow: The Tail */
+  .btn-weight-morph .kinetic-tail {
+    width: 0;
+    opacity: 0;
+    transition: width 0.3s ease-out, opacity 0.3s ease-out;
+  }
+
+  /* 2. Accelerator Arrow: The Head */
+  .btn-weight-morph .kinetic-arrow-head {
+    transition: transform 0.3s ease-out;
+  }
+
+  /* 3. Spec Pull: The Arrow */
+  .btn-weight-morph .kinetic-spec-icon {
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease;
+    transform: translateY(-2px);
+    opacity: 0.5;
+  }
+
+  /* MASTER TRIGGERS: Mobile Tap (:active) and Desktop Hover (:hover) */
+  .btn-weight-morph:hover .kinetic-tail,
+  .btn-weight-morph:active .kinetic-tail {
+    width: 14px !important;
+    opacity: 1 !important;
+  }
+
+  .btn-weight-morph:hover .kinetic-arrow-head,
+  .btn-weight-morph:active .kinetic-arrow-head {
+    transform: translateX(2px);
+  }
+
+  .btn-weight-morph:hover .kinetic-spec-icon,
+  .btn-weight-morph:active .kinetic-spec-icon {
+    transform: translateY(4px) !important;
+    opacity: 1 !important;
+  }
+
+  /* The Scaling Word Container */
+  .scaling-container {
+    display: inline-flex;
+    align-items: baseline;
+    cursor: default;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* The Letter 'A' */
+  .scaling-container .char-a {
+    display: inline-block;
+    transform-origin: left;
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  /* The Suffix 'LE' */
+  .scaling-container .suffix {
+    display: inline-flex;
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  /* TRIGGER: Desktop Hover & Mobile Tap */
+  .scaling-container:hover .char-a,
+  .scaling-container:active .char-a {
+    transform: scaleX(3.5);
+  }
+
+  .scaling-container:hover .suffix,
+  .scaling-container:active .suffix {
+    transform: translateX(1.55em);
+  }
+
+  /* The Big Work Text Logic */
+  .work-base-text {
+    -webkit-text-stroke: 2.5px #2A2A2A;
+    transition: -webkit-text-stroke 0.5s ease-out, filter 0.5s ease-out;
+  }
+
+  /* Desktop hover remains CSS for zero-latency */
+  @media (hover: hover) {
+    .work-base-text:hover {
+      -webkit-text-stroke: 3px #E95420;
+      filter: drop-shadow(0 0 30px rgba(233, 84, 32, 0.3));
+    }
+  }
+
+  /* The Master Anchor Trigger */
+  .work-anchor {
+    position: relative;
+    display: block;
+    width: 100%;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+
+  /* The Ghost Layer (Default) */
+  .layer-ghost {
+    -webkit-text-stroke: 2px #2A2A2A;
+    transition: opacity 0.2s ease;
+  }
+
+  /* The Active Layer (Orange + Glow) */
+  .layer-active {
+    position: absolute;
+    inset: 0;
+    -webkit-text-stroke: 2.5px #E95420;
+    filter: drop-shadow(0 0 25px rgba(233, 84, 32, 0.4));
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+
+  /* TRIGGER: Hardware-level toggle */
+  .work-anchor:hover .layer-active,
+  .work-anchor:active .layer-active {
+    opacity: 1 !important;
+  }
+
+  .work-anchor:hover .layer-ghost,
+  .work-anchor:active .layer-ghost {
+    opacity: 0 !important;
+  }
+
+  /* Incubation Tile Logic */
+  .incubation-tile-v1 {
+    border: 1px dashed #1C1C1E;
+    opacity: 0.4;
+    transition: all 0.3s ease;
+    cursor: help;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .incubation-tile-v1 .plus-circle {
+    border: 1px solid #1C1C1E;
+    transition: border-color 0.3s ease;
+  }
+
+  /* TRIGGER: Desktop Hover & Mobile Tap */
+  .incubation-tile-v1:hover,
+  .incubation-tile-v1:active {
+    opacity: 1 !important;
+    border-color: #E95420 !important;
+  }
+
+  /* Sync the internal circle border */
+  .incubation-tile-v1:hover .plus-circle,
+  .incubation-tile-v1:active .plus-circle {
+    border-color: #E95420 !important;
+  }
+
 }
+
 
 @layer base {
   html {

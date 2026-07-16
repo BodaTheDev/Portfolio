@@ -84,11 +84,31 @@ const Projects = () => {
                     ))}
 
                     {/* Future Expansion Tile */}
-                    <div className="border border-dashed border-border-muted p-8 flex flex-col items-center justify-center text-center opacity-40 hover:opacity-100 hover:border-brand-orange transition-all group cursor-help">
-                        <div className="w-10 h-10 border border-border-muted rounded-full flex items-center justify-center mb-4 group-hover:border-brand-orange">
-                            <span className="text-brand-orange">+</span>
+                    <div className="incubation-tile-v1 p-8 flex flex-col items-center justify-center text-center group touch-manipulation">
+
+                        {/* Wrapper Circle */}
+                        <div className="plus-circle w-10 h-10 rounded-full flex items-center justify-center mb-4">
+                            {/* THE SURGICAL PLUS: Mathematical center [12,12] in a 24x24 box */}
+                            <svg
+                                width="18"
+                                height="18"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="#E95420"
+                                strokeWidth="3"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                className="block"
+                            >
+                                <line x1="12" y1="5" x2="12" y2="19" />
+                                <line x1="5" y1="12" x2="19" y2="12" />
+                            </svg>
                         </div>
-                        <p className="font-mono text-[10px] uppercase tracking-widest">Awaiting Next <br /> Incubation</p>
+
+                        <p className="font-mono text-[10px] uppercase tracking-widest text-text-body">
+                            Awaiting Next <br /> Incubation
+                        </p>
+
                     </div>
                 </div>
             </div>
