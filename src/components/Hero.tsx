@@ -2,18 +2,34 @@
 
 import { motion } from 'framer-motion';
 import dynamic from 'next/dynamic';
-import { ArrowRight, Download } from 'lucide-react';
+// import { ArrowRight, Download, Code } from 'lucide-react';
+import { WeightHover } from './WeightHover';
 import { CyberGlitchText } from './CyberGlitchText';
 import { ScalingWord } from './ScalingWord';
+import { AcceleratorArrow, SpecPull } from './KineticIcons';
 
 const Scene3D = dynamic(() => import('./Scene3D'), {
     ssr: false,
     loading: () => <div className="w-full h-full bg-surface/20" />
 });
 
+const scrollToWork = () => {
+    const workSection = document.getElementById('projects');
+    if (workSection) {
+        workSection.scrollIntoView({ behavior: 'smooth' });
+    }
+};
+
+const scrollToSpecs = () => {
+    const specsSection = document.getElementById('capabilities');
+    if (specsSection) {
+        specsSection.scrollIntoView({ behavior: 'smooth' });
+    }
+};
+
 const Hero = () => {
     return (
-        <section className="relative min-h-screen flex flex-col-reverse lg:flex-row items-center bg-black px-6 md:px-24 pt-24 pb-12 lg:py-0 overflow-hidden">
+        <section id="home" className="relative min-h-screen flex flex-col-reverse lg:flex-row items-center bg-black px-6 md:px-24 pt-24 pb-12 lg:py-0 overflow-hidden">
 
             {/* Right-side Vertical Label - Desktop Only */}
             <div className="absolute right-8 top-1/2 -translate-y-1/2 hidden xl:block z-0">
@@ -35,39 +51,44 @@ const Hero = () => {
                         <div className="flex items-center gap-3 mb-6 md:mb-8">
                             <div className="w-2 h-2 bg-brand-orange rounded-full" />
                             <p className="text-[10px] md:text-[11px] uppercase tracking-[0.2em] text-text-body font-bold">
-                                Senior Full-Stack Architect <br />
+                                BACKEND ENGINEER & TECHNICAL PROJECT MANAGER <br />
                                 <span className="text-brand-orange/60">Based in Egypt / Remote</span>
                             </p>
                         </div>
 
                         {/* Responsive Font Sizes */}
-                        <h1 className="glitch-header text-4xl sm:text-5xl md:text-7xl lg:text-[100px] xl:text-[120px] font-bold leading-[0.9] md:leading-[0.85] tracking-tighter text-white uppercase mb-6 md:mb-10">
+                        <h1 className="glitch-header text-5xl sm:text-6xl md:text-7xl lg:text-7xl xl:text-[90px] 2xl:text-[120px] font-bold leading-[0.9] md:leading-[0.85] tracking-tighter text-white uppercase mb-8 md:mb-10">
                             Designing<br />
                             <CyberGlitchText>Systems</CyberGlitchText><br />
                             That <ScalingWord />
                         </h1>
 
                         <p className="text-text-body text-sm md:text-base max-w-lg leading-relaxed mb-8 md:mb-12 font-medium opacity-70">
-                            I am Abdelrahman, a Backend Engineer and Systems Architect.
-                            I specialize in the critical transition from MVP to Enterprise, replacing fragmented legacy code with robust backend environments.
+                            I am Abdelrahman, a Backend Engineer and Systems Architect. <br />
+                            I specialize in transitioning MVPs to high-concurrency enterprise architectures, designing robust, type-safe Node.js engines, and orchestrating cross-functional teams to deliver stable, high-performance infrastructure.
                         </p>
 
-                        <div className="flex flex-wrap items-center gap-4 md:gap-8">
-                            <button className="bg-brand-orange text-white px-8 md:px-10 py-4 md:py-5 font-bold uppercase text-[10px] md:text-[11px] tracking-widest flex items-center gap-4 hover:bg-white hover:text-black transition-all group">
-                                View My Work
-                                <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />
-                            </button>
+                        {/* CTA Group - Optimized for Weight Interaction */}
+                        <div className="flex flex-wrap items-center gap-6 md:gap-10">
+                            <WeightHover
+                                label="POP THE HOOD"
+                                onClick={scrollToWork}
+                                icon={<AcceleratorArrow />}
+                                className="bg-brand-orange text-white px-8 md:px-10 py-4 md:py-5 uppercase text-[11px] tracking-[0.3em] hover:bg-white hover:text-black group"
+                            />
 
-                            <button className="flex items-center gap-3 text-[10px] md:text-[11px] uppercase tracking-widest font-bold text-white hover:text-brand-orange transition-colors group">
-                                Download Resume
-                                <Download className="w-4 h-4 group-hover:translate-y-1 transition-transform" />
-                            </button>
+                            <WeightHover
+                                label="FETCH SPECS"
+                                onClick={scrollToSpecs}
+                                icon={<SpecPull />}
+                                className="text-white hover:text-brand-orange uppercase text-[11px] tracking-[0.3em] group"
+                            />
                         </div>
                     </motion.div>
                 </div>
 
                 {/* TOP (on Mobile) / RIGHT (on Desktop): Visual Column */}
-                <div className="w-full lg:w-5/12 relative h-[300px] sm:h-[400px] lg:h-[800px] flex items-center justify-center z-10">
+                <div className="w-full lg:w-5/12 relative h-[300px] sm:h-[400px] lg:h-[70vh] flex items-center justify-center z-10">
                     {/* The Background Glow */}
                     <div className="absolute w-[200px] h-[200px] md:w-[600px] md:h-[600px] rounded-full bg-brand-orange/5 lg:bg-brand-orange/10 blur-[60px] lg:blur-[100px] z-0" />
 

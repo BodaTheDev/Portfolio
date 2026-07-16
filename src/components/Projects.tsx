@@ -49,7 +49,7 @@ const projectLogs = [
 
 const Projects = () => {
     return (
-        <section id="work" className="py-24 bg-black border-t border-border-muted arch-grid relative overflow-hidden">
+        <section id="projects" className="py-24 bg-black border-t border-border-muted arch-grid relative overflow-hidden">
             {/* Background Decorative Element */}
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-brand-orange/5 blur-[120px] rounded-full pointer-events-none" />
 

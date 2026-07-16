@@ -14,7 +14,7 @@ const Navbar = () => {
 
             {/* Navigation Links - Centered */}
             <div className="hidden md:flex items-center gap-10 absolute left-1/2 -translate-x-1/2">
-                {['Home', 'Work', 'Services', 'About', 'Contact'].map((item) => (
+                {['Home', 'Capabilities', 'Projects', 'Contact'].map((item) => (
                     <a
                         key={item}
                         href={`#${item.toLowerCase()}`}

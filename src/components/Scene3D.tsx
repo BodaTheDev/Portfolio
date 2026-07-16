@@ -1,12 +1,17 @@
 'use client';
 
 import { Suspense, useRef, RefObject } from 'react';
-import { Canvas, useFrame } from '@react-three/fiber';
+import { Canvas, useFrame, useThree } from '@react-three/fiber'; // Added useThree
 import { useGLTF, Float, PerspectiveCamera, ContactShadows, useTexture } from '@react-three/drei';
 import * as THREE from 'three';
 
 const Model = () => {
     const { scene } = useGLTF('/models/abelrahman_avatar.glb', true);
+    const { viewport } = useThree(); // Get the responsive viewport dimensions
+
+    // Calculate a scale that is always a percentage of the container width
+    // On large screens, we cap it at 2.5. On smaller ones, it shrinks with the width.
+    const responsiveScale = Math.min(viewport.width * 0.55, 2.6);
 
     scene.traverse((node) => {
         if ((node as THREE.Mesh).isMesh) {
@@ -20,15 +25,22 @@ const Model = () => {
         }
     });
 
-    return <primitive object={scene} scale={2.5} position={[0, -2.2, 0]} />;
+    return <primitive object={scene} scale={responsiveScale} position={[0, -2.2, 0]} />;
 };
 
 const Signature = () => {
     const texture = useTexture('/models/signature.svg');
+    const { viewport } = useThree();
+
+    // Scale the signature proportionally with the viewport
+    const sigScale = Math.min(viewport.width * 0.4, 2.5);
+    // Adjust position to stay at the bottom-left of the head regardless of scale
+    const sigPosX = -viewport.width * 0.15;
+
     return (
         <Float speed={0} rotationIntensity={0.2} floatIntensity={0.5}>
-            <mesh position={[-1.1, -3.6, 0.8]} rotation={[0, 0, 0]}>
-                <planeGeometry args={[2.5, 1]} />
+            <mesh position={[sigPosX, -3.6, 0.8]} rotation={[0, 0, 0]}>
+                <planeGeometry args={[sigScale, sigScale * 0.4]} />
                 <meshStandardMaterial
                     map={texture}
                     transparent={true}

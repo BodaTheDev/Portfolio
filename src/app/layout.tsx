@@ -4,6 +4,7 @@ import "./globals.css";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 import { Space_Grotesk } from 'next/font/google';
+import MouseEffects from '@/components/MouseEffects';
 
 // Optimization: Subsetting fonts for performance
 const geistSans = Geist({
@@ -40,7 +41,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="bg-black">
+    <html lang="en" className="bg-black" suppressHydrationWarning>
       <body
         className={cn(
           geistSans.variable,
@@ -50,6 +51,7 @@ export default function RootLayout({
           "min-h-screen bg-black overflow-x-hidden"
         )}
       >
+        <MouseEffects />
         {/* Architectural Background Grid */}
         <div className="fixed inset-0 z-0 pointer-events-none arch-grid opacity-20" />
 
