@@ -1,7 +1,12 @@
 'use client';
 
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Shield, Zap, Target, Cpu } from 'lucide-react';
+import { WeightHover } from './WeightHover';
+import { SpecPull } from './KineticIcons';
+import { Drawer } from './Drawer';
+import { ResumeView } from './ResumeView';
 
 const pillars = [
     {
@@ -27,6 +32,8 @@ const pillars = [
 ];
 
 const Capabilities = () => {
+    const [isResumeOpen, setIsResumeOpen] = useState(false);
+
     return (
         <section id="capabilities" className="py-24 px-6 border-t border-border-muted bg-black relative overflow-hidden">
             <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16">
@@ -35,15 +42,28 @@ const Capabilities = () => {
                 <div className="space-y-12">
                     <div>
                         <h2 className="text-sm font-mono text-brand-orange tracking-[0.3em] mb-4 uppercase">
-              // Core Capabilities
+                            // Core Capabilities
                         </h2>
-                        <div className="space-y-6">
+                        <div className="space-y-6 mb-12">
                             {["Technical Leadership / Project Management", "System Architecture / Backend Engineering", "Strategic Optimization"].map((cap, i) => (
                                 <div key={i} className="group flex items-center gap-4">
                                     <span className="text-2xl font-mono text-border-muted group-hover:text-brand-orange transition-colors">0{i + 1}</span>
                                     <h3 className="text-2xl md:text-4xl font-bold tracking-tight">{cap}</h3>
                                 </div>
                             ))}
+                        </div>
+
+                        {/* NEW: Primary Specification Action */}
+                        <div className="pt-6 border-t border-border-muted/30">
+                            <p className="text-[10px] font-mono text-text-body uppercase tracking-[0.2em] mb-4">
+                                [ Manual Data Extraction Available ]
+                            </p>
+                            <WeightHover
+                                label="VIEW FULL SPECIFICATION"
+                                onClick={() => setIsResumeOpen(true)}
+                                icon={<SpecPull />}
+                                className="text-brand-orange hover:text-white transition-colors uppercase text-[11px] tracking-[0.3em] group"
+                            />
                         </div>
                     </div>
 
@@ -73,10 +93,18 @@ const Capabilities = () => {
                         </motion.div>
                     ))}
                 </div>
-
             </div>
 
-            {/* Decorative vertical line */}
+            {/* Side Drawer for Resume */}
+            <Drawer
+                isOpen={isResumeOpen}
+                onClose={() => setIsResumeOpen(false)}
+                title="Abdelrahman Al-Meshwady Resume.pdf"
+                downloadUrl="/documents/abdelrahman_al-meshwady_resume.pdf"
+            >
+                <ResumeView />
+            </Drawer>
+
             <div className="hidden lg:block absolute top-0 left-1/2 w-[1px] h-full bg-border-muted/30" />
         </section>
     );
