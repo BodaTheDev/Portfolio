@@ -125,9 +125,10 @@ const Capabilities = () => {
                         {pillars.map((pillar, index) => (
                             <motion.div
                                 key={index}
-                                style={{
-                                    animationDelay: `${index * 0.1}s`
-                                }}
+                                initial={{ opacity: 0.5, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true, amount: 0.1 }}
+                                transition={{ delay: index * 0.1 }}
                                 className="p-8 bg-surface border border-border-muted hover:border-brand-orange/50 transition-all duration-500 group relative overflow-hidden"
                             >
                                 {/* Decorative BG Number */}
