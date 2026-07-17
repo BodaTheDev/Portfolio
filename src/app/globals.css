@@ -211,10 +211,6 @@
     display: inline-block;
     font-weight: 400;
     font-variation-settings: "wght" 400;
-    /* High-performance easing */
-    transition: font-variation-settings 0.4s cubic-bezier(0.22, 1, 0.36, 1),
-      font-weight 0.4s cubic-bezier(0.22, 1, 0.36, 1),
-      color 0.3s ease;
   }
 
   /* MASTER TRIGGER: DESKTOP HOVER & MOBILE TAP */

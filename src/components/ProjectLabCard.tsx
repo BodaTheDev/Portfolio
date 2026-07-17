@@ -12,25 +12,29 @@ interface LabCardProps {
     title: string;
     description: string;
     metrics: ProjectMetric[];
+    onClick?: () => void; // Added for drawer trigger
 }
 
-export const ProjectLabCard = ({ category, title, description, metrics }: LabCardProps) => {
+export const ProjectLabCard = ({ category, title, description, metrics, onClick }: LabCardProps) => {
     return (
-        <div className="bg-surface border border-border-muted flex flex-col group hover:border-brand-orange transition-colors">
-            {/* Card Header: Category & Type */}
+        <div
+            onClick={onClick}
+            className="bg-surface border border-border-muted flex flex-col group hover:border-brand-orange transition-all duration-500 h-full cursor-pointer"
+        >
+            {/* Card Header */}
             <div className="flex items-center justify-between px-4 py-2 border-b border-border-muted bg-black/40">
                 <span className="text-[9px] font-mono uppercase tracking-[0.2em] text-text-body">
                     [{category}]
                 </span>
-                <div className="w-1.5 h-1.5 bg-brand-orange/40 rounded-full group-hover:bg-brand-orange group-hover:shadow-[0_0_8px_#E95420]" />
+                <div className="w-1.5 h-1.5 bg-brand-orange/40 rounded-full group-hover:bg-brand-orange group-hover:shadow-[0_0_8px_#E95420] transition-all" />
             </div>
 
-            {/* Card Body: Info */}
+            {/* Card Body */}
             <div className="p-6 flex-grow border-b border-border-muted">
                 <h4 className="text-xl font-bold text-text-header mb-3 uppercase tracking-tight group-hover:text-brand-orange transition-colors">
                     {title}
                 </h4>
-                <p className="text-xs text-text-body leading-relaxed font-medium">
+                <p className="text-xs text-text-body leading-relaxed font-medium line-clamp-3">
                     {description}
                 </p>
             </div>
@@ -47,10 +51,11 @@ export const ProjectLabCard = ({ category, title, description, metrics }: LabCar
                         </p>
                     </div>
                 ))}
-                {/* Action Button Integrated into Grid */}
-                <div className="bg-black/20 hover:bg-brand-orange transition-all p-4 flex items-center justify-center group/btn cursor-pointer">
-                    <span className="text-[9px] font-mono uppercase font-bold text-text-body group-hover/btn:text-white mr-2">Expand Specs</span>
-                    <ArrowUpRight className="w-3 h-3 group-hover/btn:text-white transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
+
+                {/* The Expand Button - Restored Glow logic via group-hover */}
+                <div className="bg-black/20 group-hover:bg-brand-orange transition-all duration-300 p-4 flex items-center justify-center gap-2">
+                    <span className="text-[9px] font-mono uppercase font-bold text-text-body group-hover:text-white">Expand Specs</span>
+                    <ArrowUpRight className="w-3 h-3 text-text-body group-hover:text-white transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </div>
             </div>
         </div>

@@ -2,7 +2,6 @@
 
 import { motion } from 'framer-motion';
 import dynamic from 'next/dynamic';
-// import { ArrowRight, Download, Code } from 'lucide-react';
 import { WeightHover } from './WeightHover';
 import { CyberGlitchText } from './CyberGlitchText';
 import { ScalingWord } from './ScalingWord';
@@ -16,7 +15,10 @@ const Scene3D = dynamic(() => import('./Scene3D'), {
 
 const Hero = () => {
     return (
-        <section id="home" className="relative min-h-screen flex flex-col-reverse lg:flex-row items-center bg-black px-6 md:px-24 pt-24 pb-12 lg:py-0 overflow-hidden">
+        <section
+            id="home"
+            className="relative min-h-screen flex flex-col-reverse lg:flex-row items-center bg-black px-6 md:px-24 pt-36 pb-12 lg:pt-23 lg:pb-0 overflow-hidden"
+        >
 
             {/* Right-side Vertical Label - Desktop Only */}
             <div className="absolute right-8 top-1/2 -translate-y-1/2 hidden xl:block z-0">

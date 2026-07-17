@@ -6,6 +6,7 @@ import { twMerge } from "tailwind-merge";
 import { Space_Grotesk } from 'next/font/google';
 import MouseEffects from '@/components/MouseEffects';
 
+
 // Optimization: Subsetting fonts for performance
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,8 +26,42 @@ function cn(...inputs: ClassValue[]) {
 }
 
 export const metadata: Metadata = {
-  title: "ABDELRAHMAN BODA | FULL-STACK ARCHITECT",
-  description: "Senior Full-Stack Engineer & Technical Lead specializing in high-concurrency backend systems and enterprise-grade infrastructure.",
+  title: {
+    default: "Abdelrahman Al-Meshwady",
+    template: "%s | Abdelrahman Al-Meshwady"
+  },
+  description: "Senior Backend Engineer and Technical Project Manager specializing in high-concurrency enterprise architectures, NestJS infrastructure, and scalable Node.js engines.",
+  keywords: [
+    "Abdelrahman Ahmed Al-Meshwady",
+    "Abdelrahman Al-Meshwady",
+    "Al-Meshwady",
+    "BodaTheDev",
+    "Systems Architect Egypt",
+    "Systems Architect",
+    "Senior Backend Engineer",
+    "Backend Engineer",
+    "Technical Project Manager",
+    "Project Manager",
+    "Node.js Expert",
+    "Node.js Dev",
+    "Node.js Developer",
+    "High-Concurrency Systems",
+    "Enterprise Software Architecture"
+  ],
+  alternates: {
+    canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
 };
 
 const spaceGrotesk = Space_Grotesk({
