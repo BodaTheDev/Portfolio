@@ -1,6 +1,6 @@
 'use client';
 
-import { FileText, ExternalLink, Download, ShieldCheck } from 'lucide-react';
+import { FileText, ExternalLink, ShieldCheck } from 'lucide-react';
 
 export const ResumeView = () => {
     const resumePath = "/documents/abdelrahman_al-meshwady_resume.pdf";
@@ -19,6 +19,8 @@ export const ResumeView = () => {
                 <a
                     href={resumePath}
                     target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Open full resume in a new browser tab"
                     className="text-[10px] font-mono text-brand-orange hover:text-white transition-colors flex items-center gap-2"
                 >
                     FULL_SCREEN <ExternalLink className="w-3 h-3" />
@@ -43,6 +45,8 @@ export const ResumeView = () => {
                         <a
                             href={resumePath}
                             target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="Access technical specification via external browser stream"
                             className="block w-full py-3 bg-brand-orange text-white text-[10px] font-bold uppercase tracking-[0.2em]"
                         >
                             Open External Stream

@@ -78,6 +78,7 @@ const Footer = () => {
                                             href={link.href}
                                             target="_blank"
                                             rel="noopener noreferrer"
+                                            aria-label={`Connect with me on ${link.name}`}
                                             className="text-xs md:text-sm text-neutral-300 hover:text-[#E95420] transition-colors flex items-center gap-2 group"
                                         >
                                             <link.icon className="w-3 h-3 md:w-4 md:h-4 text-neutral-600 group-hover:text-[#E95420] transition-colors" />
@@ -104,7 +105,9 @@ const Footer = () => {
 
                 {/* MIDDLE SECTION: Dual-Layer Hardware Interaction */}
                 <div className="relative flex justify-center items-center py-4 md:py-8 mb-8 md:mb-12 cursor-pointer">
-                    <a href={`mailto:${email}`} className="work-anchor no-underline">
+                    <a href={`mailto:${email}`}
+                        aria-label="Initiate connection via email to start a project"
+                        className="work-anchor no-underline">
                         <h3 className="relative text-[14vw] md:text-[12vw] font-bold leading-none text-transparent uppercase select-none text-center">
 
                             {/* LAYER 1: The Ghost (Visible by default) */}

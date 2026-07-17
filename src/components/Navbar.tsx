@@ -7,7 +7,9 @@ const Navbar = () => {
         <nav className="fixed top-0 w-full z-50 px-4 md:px-12 py-3 md:py-4 flex items-center justify-between bg-black/30 backdrop-blur-[6px] lg:bg-transparent">
 
             {/* BRANDING: Logo + Name (Added flex-shrink-0 to prevent squishing) */}
-            <a href="#home" className="flex items-center gap-3 md:gap-4 group no-underline flex-shrink-0">
+            <a href="#home"
+                aria-label="Back to top"
+                className="flex items-center gap-3 md:gap-4 group no-underline flex-shrink-0">
                 <div className="relative w-8 h-8 md:w-10 md:h-10 flex-shrink-0">
                     <img
                         src="/logo.svg"
@@ -33,6 +35,7 @@ const Navbar = () => {
                     <a
                         key={item}
                         href={`#${item.toLowerCase()}`}
+                        aria-label={item}
                         className="text-[10px] xl:text-[11px] uppercase tracking-widest text-text-header hover:text-brand-orange transition-colors font-medium whitespace-nowrap"
                     >
                         {item}
@@ -43,6 +46,7 @@ const Navbar = () => {
             {/* STATUS BADGE: Linked to Footer + Adaptive Shorthand */}
             <a
                 href="#contact"
+                aria-label="System Status: Available for Projects. Click to jump to contact section."
                 className="flex items-center gap-2 md:gap-3 border border-border-muted md:border-none px-2 py-1.5 md:p-0 bg-surface md:bg-transparent select-none group/status hover:opacity-80 transition-opacity flex-shrink-0"
             >
                 <div className="relative flex h-1.5 w-1.5 md:h-2 md:w-2">

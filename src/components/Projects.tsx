@@ -2,9 +2,17 @@
 
 import { ProjectLabCard } from './ProjectLabCard';
 import { GlitchText } from './GlitchText';
-import { Drawer } from './Drawer';
-import { ProjectSpecs } from './ProjectSpecs';
 import { useState } from 'react';
+import dynamic from 'next/dynamic';
+
+const Drawer = dynamic(() => import('./Drawer').then(mod => mod.Drawer), {
+    ssr: false
+});
+
+const ProjectSpecs = dynamic(() => import('./ProjectSpecs').then(mod => mod.ProjectSpecs), {
+    ssr: false,
+    loading: () => <div className="h-screen bg-black animate-pulse" />
+});
 
 const projectLogs = [
     {
@@ -173,14 +181,14 @@ const Projects = () => {
 
                 {/* Lab Header Section */}
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-20">
-                    <div className="lg:col-span-8">
+                    <div className="lg:col-span-7">
                         <h2 className="text-[10vw] font-bold leading-[0.8] tracking-tighter uppercase mb-6 text-text-header">
                             Port- <br />
                             <GlitchText text="Folio" />
                         </h2>
                     </div>
 
-                    <div className="lg:col-span-4 flex flex-col justify-end border-l border-border-muted pl-8 pb-4">
+                    <div className="lg:col-span-5 flex flex-col justify-end border-l border-border-muted pl-20 pb-25">
                         <div className="flex items-center gap-2 mb-4">
                             <span className="w-2 h-2 bg-brand-orange rounded-full animate-pulse" />
                             <p className="font-mono text-[10px] uppercase text-brand-orange tracking-widest">
@@ -196,7 +204,12 @@ const Projects = () => {
                 {/* The Lab Grid Lounge */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
                     {projectLogs.map((p, i) => (
-                        <div key={i} onClick={() => setSelectedProject(p)} className="cursor-pointer h-full">
+                        <div key={i}
+                            onClick={() => setSelectedProject(p)}
+                            role="button"
+                            aria-label={`View technical specifications and architecture for ${p.title}`}
+                            className="cursor-pointer h-full"
+                        >
                             <ProjectLabCard {...p} />
                         </div>
                     ))}
@@ -204,6 +217,7 @@ const Projects = () => {
                     {/* Future Expansion Tile - Link Optimized for Conversion */}
                     <a
                         href="#contact"
+                        aria-label="Inquire about a new project incubation"
                         className="incubation-tile-v1 p-8 flex flex-col items-center justify-center text-center group touch-manipulation no-underline"
                     >
                         {/* Wrapper Circle */}

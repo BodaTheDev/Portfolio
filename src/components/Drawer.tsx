@@ -53,10 +53,10 @@ export const Drawer = ({ isOpen, onClose, title, children, downloadUrl }: Drawer
                         {/* Drawer Header */}
                         <div className="flex items-center justify-between px-6 py-6 border-b border-border-muted bg-black/20">
                             <div>
-                                <p className="text-[10px] font-mono text-brand-orange uppercase tracking-[0.3em] mb-1">
+                                <p className="text-[9px] font-mono text-brand-orange uppercase tracking-[0.3em] mb-1">
                                     // System_Log
                                 </p>
-                                <h2 className="text-xl font-medium text-text-header uppercase tracking-tighter">
+                                <h2 className="text-l font-medium text-text-header uppercase tracking-tighter">
                                     {title}
                                 </h2>
                             </div>
@@ -66,6 +66,7 @@ export const Drawer = ({ isOpen, onClose, title, children, downloadUrl }: Drawer
                                     <a
                                         href={downloadUrl}
                                         download
+                                        aria-label="Download technical specification binary"
                                         className="p-2 hover:text-brand-orange transition-colors"
                                         title="Download PDF"
                                     >
@@ -74,9 +75,10 @@ export const Drawer = ({ isOpen, onClose, title, children, downloadUrl }: Drawer
                                 )}
                                 <button
                                     onClick={onClose}
+                                    aria-label="Close specification panel"
                                     className="p-2 hover:bg-white/10 transition-colors rounded-none border border-border-muted"
                                 >
-                                    <X className="w-5 h-5" />
+                                    <X className="w-4 h-4" />
                                 </button>
                             </div>
                         </div>

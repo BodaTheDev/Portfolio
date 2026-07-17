@@ -50,6 +50,7 @@ export default function NotFound() {
                 <div className="pt-8">
                     <Link
                         href="/"
+                        aria-label="Return to the main home page"
                         className="inline-flex items-center gap-3 px-10 py-5 bg-brand-orange text-white font-bold uppercase text-[10px] tracking-[0.3em] hover:bg-white hover:text-black transition-all group"
                     >
                         GET BACK TO SAFETY

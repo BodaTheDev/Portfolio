@@ -22,7 +22,7 @@ const Hero = () => {
 
             {/* Right-side Vertical Label - Desktop Only */}
             <div className="absolute right-8 top-1/2 -translate-y-1/2 hidden xl:block z-0">
-                <p className="rotate-90 origin-right text-[10px] uppercase tracking-[0.5em] text-text-body/40 whitespace-nowrap border-b border-border-muted pb-2">
+                <p className="rotate-90 origin-right text-[10px] uppercase tracking-[0.5em] text-text-body/90 whitespace-nowrap border-b border-border-muted pb-2">
                     Architecting Performance / 2026
                 </p>
             </div>
@@ -91,7 +91,11 @@ const Hero = () => {
                         <div className="block lg:hidden w-full max-w-[240px]">
                             <img
                                 src="/models/avatar_static.webp"
-                                alt="Abdelrahman Avatar"
+                                alt="Abdelrahman Ahmed Al-Meshwady Avatar"
+                                width="240"
+                                height="240"
+                                fetchPriority="high"
+                                loading="eager"
                                 className="w-full h-auto drop-shadow-[0_0_30px_rgba(233,84,32,0.2)]"
                             />
                         </div>

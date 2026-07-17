@@ -5,8 +5,16 @@ import { motion } from 'framer-motion';
 import { Shield, Zap, Target, Cpu } from 'lucide-react';
 import { WeightHover } from './WeightHover';
 import { SpecPull } from './KineticIcons';
-import { Drawer } from './Drawer';
-import { ResumeView } from './ResumeView';
+import dynamic from 'next/dynamic';
+
+const Drawer = dynamic(() => import('./Drawer').then(mod => mod.Drawer), {
+    ssr: false
+});
+
+const ResumeView = dynamic(() => import('./ResumeView').then(mod => mod.ResumeView), {
+    ssr: false,
+    loading: () => <div className="h-screen bg-black animate-pulse" />
+});
 
 const coreSteps = [
     {
@@ -117,10 +125,9 @@ const Capabilities = () => {
                         {pillars.map((pillar, index) => (
                             <motion.div
                                 key={index}
-                                initial={{ opacity: 0, y: 80 }}
-                                whileInView={{ opacity: 1, y: 55 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: index * 0.1 }}
+                                style={{
+                                    animationDelay: `${index * 0.1}s`
+                                }}
                                 className="p-8 bg-surface border border-border-muted hover:border-brand-orange/50 transition-all duration-500 group relative overflow-hidden"
                             >
                                 {/* Decorative BG Number */}
@@ -148,8 +155,8 @@ const Capabilities = () => {
             <Drawer
                 isOpen={isResumeOpen}
                 onClose={() => setIsResumeOpen(false)}
-                title="PERSONNEL_SPEC_AL_MESHWADY.PDF"
-                downloadUrl="/abdelrahman_al-meshwady_resume.pdf"
+                title="AlMeshwady_Resume.PDF"
+                downloadUrl="/documents/abdelrahman_al-meshwady_resume.pdf"
             >
                 <ResumeView />
             </Drawer>

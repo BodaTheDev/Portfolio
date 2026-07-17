@@ -87,6 +87,8 @@ export default function Scene3D() {
     return (
         <div className="w-full h-full">
             <Canvas
+                role="img"
+                aria-label="Interactive 3D architectural bust of Abdelrahman Al-Meshwady"
                 shadows={{ type: THREE.PCFShadowMap }}
                 gl={{
                     antialias: true,
