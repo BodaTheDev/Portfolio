@@ -15,17 +15,20 @@ interface DrawerProps {
 export const Drawer = ({ isOpen, onClose, title, children, downloadUrl }: DrawerProps) => {
 
     useEffect(() => {
+        const handleEsc = (e: KeyboardEvent) => {
+            if (e.key === 'Escape') onClose();
+        };
+
         if (isOpen) {
-            // Lock the body scroll
             document.body.style.overflow = 'hidden';
+            window.addEventListener('keydown', handleEsc);
         } else {
-            // Restore scroll
             document.body.style.overflow = 'unset';
         }
 
-        // Cleanup function to ensure scroll is restored if component unmounts
         return () => {
             document.body.style.overflow = 'unset';
+            window.removeEventListener('keydown', handleEsc);
         };
     }, [isOpen]);
 
