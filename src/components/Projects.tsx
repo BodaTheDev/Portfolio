@@ -182,7 +182,7 @@ const Projects = () => {
                 {/* Lab Header Section */}
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-20">
                     <div className="lg:col-span-7">
-                        <h2 className="text-[10vw] font-bold leading-[0.8] tracking-tighter uppercase mb-6 text-text-header">
+                        <h2 className="text-[22vw] lg:text-[10vw] font-bold leading-[0.8] tracking-tighter uppercase mb-6 text-text-header">
                             Port- <br />
                             <GlitchText text="Folio" />
                         </h2>
