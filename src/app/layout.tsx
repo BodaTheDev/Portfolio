@@ -129,6 +129,19 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://almeshwady.vercel.app",
   },
+
+  /**
+   * 7. ICONS
+   * Configures browser favicons and device-specific touch icons.
+   */
+
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+  },
 };
 
 const spaceGrotesk = Space_Grotesk({
