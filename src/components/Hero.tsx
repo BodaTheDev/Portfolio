@@ -82,23 +82,10 @@ const Hero = () => {
                     <div className="absolute w-[200px] h-[200px] md:w-[600px] md:h-[600px] rounded-full bg-brand-orange/5 lg:bg-brand-orange/10 blur-[60px] lg:blur-[100px] z-0" />
 
                     <div className="relative z-10 w-full h-full flex items-center justify-center pointer-events-auto">
-                        {/* Desktop: 3D Scene */}
+                        {/* 3D Scene */}
                         <div className="w-full h-full">
                             <Scene3D />
                         </div>
-
-                        {/* Mobile: Static WebP
-                        <div className="block lg:hidden w-full max-w-[240px]">
-                            <img
-                                src="/models/avatar_static.webp"
-                                alt="Abdelrahman Ahmed Al-Meshwady Avatar"
-                                width="240"
-                                height="240"
-                                fetchPriority="high"
-                                loading="eager"
-                                className="w-full h-auto drop-shadow-[0_0_30px_rgba(233,84,32,0.2)]"
-                            />
-                        </div> */}
                     </div>
                 </div>
 
