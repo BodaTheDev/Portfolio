@@ -83,11 +83,11 @@ const Hero = () => {
 
                     <div className="relative z-10 w-full h-full flex items-center justify-center pointer-events-auto">
                         {/* Desktop: 3D Scene */}
-                        <div className="hidden lg:block w-full h-full">
+                        <div className="w-full h-full">
                             <Scene3D />
                         </div>
 
-                        {/* Mobile: Static WebP */}
+                        {/* Mobile: Static WebP
                         <div className="block lg:hidden w-full max-w-[240px]">
                             <img
                                 src="/models/avatar_static.webp"
@@ -98,7 +98,7 @@ const Hero = () => {
                                 loading="eager"
                                 className="w-full h-auto drop-shadow-[0_0_30px_rgba(233,84,32,0.2)]"
                             />
-                        </div>
+                        </div> */}
                     </div>
                 </div>
 

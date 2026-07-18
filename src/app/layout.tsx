@@ -5,6 +5,8 @@ import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 import SchemaData from "@/components/SchemaData";
 import { ClientProviders } from '@/components/ClientProviders';
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/react";
 
 
 
@@ -175,6 +177,8 @@ export default function RootLayout({
           <main className="relative z-10 flex flex-col min-h-screen">
             {children}
           </main>
+          <SpeedInsights />
+          <Analytics />
         </ClientProviders>
       </body>
     </html>
