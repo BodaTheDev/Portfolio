@@ -6,6 +6,7 @@ import { Shield, Zap, Target, Cpu } from 'lucide-react';
 import { WeightHover } from './WeightHover';
 import { SpecPull } from './KineticIcons';
 import dynamic from 'next/dynamic';
+import { DataBeacon } from './DataBeacon';
 
 const Drawer = dynamic(() => import('./Drawer').then(mod => mod.Drawer), {
     ssr: false
@@ -97,17 +98,31 @@ const Capabilities = () => {
                             ))}
                         </div>
 
-                        {/* Specification Action */}
+                        {/* Primary Specification Action (Pure Kinetic Frame) */}
                         <div className="mt-16 pt-8 border-t border-border-muted/30">
                             <p className="text-[10px] font-mono text-text-body uppercase tracking-[0.2em] mb-6">
-                                [ Manual Data Extraction Available ]
+                                [ Manual Data Extraction ]
                             </p>
-                            <WeightHover
-                                label="VIEW FULL SPECIFICATION"
-                                onClick={() => setIsResumeOpen(true)}
-                                icon={<SpecPull />}
-                                className="text-brand-orange hover:text-white transition-colors uppercase text-[11px] tracking-[0.3em] group"
-                            />
+
+                            {/* The Targeting Reticle Container - Removed pl-5 padding */}
+                            <div className="relative inline-flex p-2 group/reticle cursor-pointer">
+
+                                {/* 4 Surgical Corner Brackets (Top-left grows to cover button) */}
+                                <div className="absolute top-0 left-0 w-3 h-3 border-t-2 border-l-2 border-brand-orange/40 transition-all duration-300 group-hover/reticle:border-brand-orange group-hover/reticle:w-full group-hover/reticle:h-full group-hover/reticle:opacity-10 z-0" />
+                                <div className="absolute top-0 right-0 w-3 h-3 border-t-2 border-r-2 border-brand-orange/40 transition-colors duration-300 group-hover/reticle:border-brand-orange z-0" />
+                                <div className="absolute bottom-0 left-0 w-3 h-3 border-b-2 border-l-2 border-brand-orange/40 transition-colors duration-300 group-hover/reticle:border-brand-orange z-0" />
+                                <div className="absolute bottom-0 right-0 w-3 h-3 border-b-2 border-r-2 border-brand-orange/40 transition-colors duration-300 group-hover/reticle:border-brand-orange z-0" />
+
+                                {/* Inner Command Block - High Contrast */}
+                                <div className="relative z-10 bg-black border border-border-muted">
+                                    <WeightHover
+                                        label="VIEW FULL SPECIFICATION"
+                                        onClick={() => setIsResumeOpen(true)}
+                                        icon={<SpecPull />}
+                                        className="text-white hover:text-brand-orange hover:bg-brand-orange/5 transition-all uppercase text-[11px] tracking-[0.3em] px-8 py-5 group"
+                                    />
+                                </div>
+                            </div>
                         </div>
                     </div>
 
