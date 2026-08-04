@@ -6,7 +6,6 @@ import { Shield, Zap, Target, Cpu } from 'lucide-react';
 import { WeightHover } from './WeightHover';
 import { SpecPull } from './KineticIcons';
 import dynamic from 'next/dynamic';
-import { DataBeacon } from './DataBeacon';
 
 const Drawer = dynamic(() => import('./Drawer').then(mod => mod.Drawer), {
     ssr: false

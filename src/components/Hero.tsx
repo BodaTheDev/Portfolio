@@ -40,7 +40,7 @@ const Hero = () => {
                         <div className="flex items-center gap-3 mb-6 md:mb-8">
                             <div className="w-2 h-2 bg-brand-orange rounded-full" />
                             <p className="text-[10px] md:text-[11px] uppercase tracking-[0.2em] text-text-body font-bold">
-                                BACKEND ENGINEER & TECHNICAL PROJECT MANAGER <br />
+                                CREATIVE SOFTWARE ENGINEER & TECHNICAL PROJECT MANAGER <br />
                                 <span className="text-brand-orange/60">Based in Egypt / Remote</span>
                             </p>
                         </div>
@@ -53,8 +53,8 @@ const Hero = () => {
                         </h1>
 
                         <p className="text-text-body text-sm md:text-base max-w-lg leading-relaxed mb-8 md:mb-12 font-medium opacity-70">
-                            I am Abdelrahman, a Backend Engineer and Systems Architect. <br />
-                            I specialize in transitioning MVPs to high-concurrency enterprise architectures, designing robust, type-safe Node.js engines, and orchestrating cross-functional teams to deliver stable, high-performance infrastructure.
+                            I am Abdelrahman, a Creative Software Engineer and Systems Architect. <br />
+                            I specialize in transitioning MVPs to high-concurrency enterprise architectures, designing robust, type-safe engines, and orchestrating cross-functional teams to deliver stable, high-performance infrastructure.
                         </p>
 
                         {/* CTA Group - Forced to the top of the stack */}
